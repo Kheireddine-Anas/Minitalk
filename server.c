@@ -5,7 +5,9 @@
 void	hundler(int signum)
 {
 	if (signum == SIGUSR1)
-		printf("LK");
+		printf("MM%d", signum);
+	else
+		printf("LK%d", signum);
 	// if(signum == 1)
 	// 	printf("1");
 	// else if(signum == 2)
@@ -19,10 +21,7 @@ void	show_num(int num)
 		show_num(num / 10);
 	write(1, &"0123456789"[num % 10], 1);
 }
-void prdf()
-{
-	printf("tesT");
-}
+
 int	main(void)
 {
 	int pid;
