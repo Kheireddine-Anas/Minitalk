@@ -23,15 +23,15 @@ void	snd_msg(int pid, char *msg)
 		while (i >= 0)
 		{
 			if ((*msg >> i) & 1)
-				printf("1");
+				kill(pid, SIGUSR1);
 			else
-				printf("0");
+				kill(pid, SIGUSR2);
 			i--;
+			usleep(1000);
 		}
-		printf(" ");
+		// printf(" ");
 		msg++;
 	}
-	printf("%d", pid);
 }
 
 int	main(int argc, char **argv)
