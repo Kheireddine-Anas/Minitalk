@@ -48,6 +48,7 @@ int	main(int argc, char **argv)
 		else
 			exit(write(1, "PID Format Error\n", 18));
 	}
+	
 	snd_msg(to_int(argv[1]), argv[2]);
 	snd_msg(to_int(argv[1]), "\n");
 	return (0);

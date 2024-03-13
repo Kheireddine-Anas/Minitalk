@@ -8,11 +8,6 @@ void	hundler(int signum)
 		printf("MM%d", signum);
 	else
 		printf("LK%d", signum);
-	// if(signum == 1)
-	// 	printf("1");
-	// else if(signum == 2)
-	// 	printf("2");
-
 }
 
 void	show_num(int num)
@@ -32,9 +27,7 @@ int	main(void)
 	write(1, "\n", 1);
 	signal(SIGUSR1, hundler);
 	signal(SIGUSR2, hundler);
-	while (1)
-	{
-		pause();
-	}
+	printf("d");
+	pause();
 	
 }
