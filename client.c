@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akheired <akheired@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/22 19:51:00 by akheired          #+#    #+#             */
+/*   Updated: 2024/03/22 19:57:14 by akheired         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <signal.h>
 
-int to_int(char *str)
+int	to_int(char *str)
 {
-	int num;
+	int	num;
 
 	num = 0;
 	while (*str >= '0' && *str <= '9')
@@ -27,9 +39,7 @@ void	snd_msg(int pid, char *msg)
 			else
 				kill(pid, SIGUSR2);
 			i--;
-			usleep(1000);
 		}
-		// printf(" ");
 		msg++;
 	}
 }
@@ -48,8 +58,7 @@ int	main(int argc, char **argv)
 		else
 			exit(write(1, "PID Format Error\n", 18));
 	}
-	
 	snd_msg(to_int(argv[1]), argv[2]);
-	snd_msg(to_int(argv[1]), "\n");
 	return (0);
 }
+	

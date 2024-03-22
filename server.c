@@ -1,33 +1,69 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   server.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akheired <akheired@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/22 19:50:57 by akheired          #+#    #+#             */
+/*   Updated: 2024/03/22 19:52:20 by akheired         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 #include <signal.h>
 
-void	hundler(int signum)
+int	g_bit_count = 7;
+
+void	show_char(char *c)
 {
-	if (signum == SIGUSR1)
-		printf("MM%d", signum);
-	else
-		printf("LK%d", signum);
+	write(1, c, 1);
+	g_bit_count = 7;
+	*c = 0;
 }
 
-void	show_num(int num)
+void	show_pid(int n_pid)
 {
-	if (num > 9)
-		show_num(num / 10);
-	write(1, &"0123456789"[num % 10], 1);
+	if (n_pid > 9)
+		show_pid(n_pid / 10);
+	write(1, &"0123456789"[n_pid % 10], 1);
+}
+
+void	sig_hand(int sig, siginfo_t *fors, void *nothing)
+{
+	static int	client_pid;
+	static int	recent_process;
+	static char	ch_ar;
+
+	client_pid = fors->si_pid;
+	if (client_pid != recent_process)
+	{
+		g_bit_count = 7;
+		ch_ar = 0;
+		recent_process = client_pid;
+	}
+	if (sig == SIGUSR1)
+	{
+		ch_ar |= (1 << g_bit_count);
+		g_bit_count--;
+	}
+	else if (sig == SIGUSR2)
+		g_bit_count--;
+	if (g_bit_count < 0)
+		show_char(&ch_ar);
+	(void)nothing;
 }
 
 int	main(void)
 {
-	int pid;
+	struct sigaction	sigs;
 
-	pid = getpid();
-	write(1, "PID : ", 7);
-	show_num(pid);
-	write(1, "\n", 1);
-	signal(SIGUSR1, hundler);
-	signal(SIGUSR2, hundler);
-	printf("d");
-	pause();
-	
+	show_pid(getpid());
+	sigs.sa_sigaction = sig_hand;
+	sigs.sa_flags = SA_SIGINFO;
+	sigaction(SIGUSR1, &sigs, NULL);
+	sigaction(SIGUSR2, &sigs, NULL);
+	while (1)
+		pause();
+	return (0);
 }
