@@ -6,14 +6,11 @@
 /*   By: akheired <akheired@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 16:44:21 by akheired          #+#    #+#             */
-/*   Updated: 2024/03/23 17:25:00 by akheired         ###   ########.fr       */
+/*   Updated: 2024/03/23 19:07:45 by akheired         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <signal.h>
+#include "minitalk.h"
 
 int	to_int(char *str)
 {
@@ -27,7 +24,7 @@ int	to_int(char *str)
 
 void	done_bck(int pid, char c)
 {
-	int i;
+	int	i;
 
 	i = 7;
 	while (i >= 0)

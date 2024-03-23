@@ -6,12 +6,11 @@
 /*   By: akheired <akheired@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 16:44:01 by akheired          #+#    #+#             */
-/*   Updated: 2024/03/23 17:16:13 by akheired         ###   ########.fr       */
+/*   Updated: 2024/03/23 19:08:17 by akheired         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <signal.h>
+#include "minitalk.h"
 
 int	g_bit_count = 7;
 

@@ -6,14 +6,11 @@
 /*   By: akheired <akheired@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 19:51:00 by akheired          #+#    #+#             */
-/*   Updated: 2024/03/23 16:44:15 by akheired         ###   ########.fr       */
+/*   Updated: 2024/03/23 19:07:40 by akheired         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <signal.h>
+#include "minitalk.h"
 
 int	to_int(char *str)
 {
