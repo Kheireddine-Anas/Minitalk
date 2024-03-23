@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akheired <akheired@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/22 19:50:57 by akheired          #+#    #+#             */
-/*   Updated: 2024/03/23 16:36:39 by akheired         ###   ########.fr       */
+/*   Created: 2024/03/23 16:44:01 by akheired          #+#    #+#             */
+/*   Updated: 2024/03/23 17:16:13 by akheired         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 
 int	g_bit_count = 7;
 
-void	show_char(char *c)
+void	show_char(char *c, int client_pid)
 {
+	(void)client_pid;
+	if (!*c)
+		kill(client_pid, SIGUSR2);
 	write(1, c, 1);
 	g_bit_count = 7;
 	*c = 0;
@@ -50,7 +53,7 @@ void	sig_hand(int sig, siginfo_t *fors, void *nothing)
 	else if (sig == SIGUSR1)
 		g_bit_count--;
 	if (g_bit_count == -1)
-		show_char(&ch_ar);
+		show_char(&ch_ar, client_pid);
 	(void)nothing;
 }
 
