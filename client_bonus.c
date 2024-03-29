@@ -6,7 +6,7 @@
 /*   By: akheired <akheired@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 16:44:21 by akheired          #+#    #+#             */
-/*   Updated: 2024/03/23 19:07:45 by akheired         ###   ########.fr       */
+/*   Updated: 2024/03/29 15:48:52 by akheired         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	snd_msg(int pid, char *msg)
 void	done_receive(int sig_rec)
 {
 	if (sig_rec == SIGUSR2)
-		write(1, "MSG HAS BEEN RECEIVED\n", 22);
+		write(1, "\033[32mMSG HAS BEEN RECEIVED\n", 28);
 }
 
 int	main(int argc, char **argv)
