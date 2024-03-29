@@ -6,7 +6,7 @@
 /*   By: akheired <akheired@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 16:44:01 by akheired          #+#    #+#             */
-/*   Updated: 2024/03/29 15:09:12 by akheired         ###   ########.fr       */
+/*   Updated: 2024/03/29 22:15:47 by akheired         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ void	show_pid(int n_pid)
 {
 	if (n_pid > 9)
 		show_pid(n_pid / 10);
+    write(1, "\033[34m", 5);
 	write(1, &"0123456789"[n_pid % 10], 1);
+    write(1, "\033[0m", 4);
+    write(1, "\033[33m", 5);
 }
 
 void	sig_hand(int sig, siginfo_t *fors, void *nothing)
@@ -59,6 +62,7 @@ int	main(void)
 {
 	struct sigaction	sigs;
 
+	write(1, "\033[34mPID : \033[0m", 15);
 	show_pid(getpid());
 	sigs.sa_sigaction = sig_hand;
 	sigs.sa_flags = SA_SIGINFO;

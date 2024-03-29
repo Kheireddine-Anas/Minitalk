@@ -6,7 +6,7 @@
 /*   By: akheired <akheired@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 16:44:21 by akheired          #+#    #+#             */
-/*   Updated: 2024/03/29 15:48:52 by akheired         ###   ########.fr       */
+/*   Updated: 2024/03/29 21:57:37 by akheired         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,16 +72,16 @@ int	main(int argc, char **argv)
 
 	i = 0;
 	if (argc != 3)
-		exit(write(1, "Improper format!\n", 18));
+		exit(write(1, "\033[31mImproper format!\n", 23));
 	while (argv[1][i])
 	{
 		if (argv[1][i] >= '0' && argv[1][i] <= '9')
 			i++;
 		else
-			exit(write(1, "PID Format Error\n", 18));
+			exit(write(1, "\033[31mPID Format Error\n", 23));
 	}
 	if (to_int(argv[1]) <= 0)
-		exit(write(1, "PID doesn't exist\n", 18));
+		exit(write(1, "\033[31mPID doesn't exist\n", 24));
 	signal(SIGUSR2, done_receive);
 	snd_msg(to_int(argv[1]), argv[2]);
 	return (0);
