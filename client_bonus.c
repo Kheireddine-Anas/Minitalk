@@ -6,11 +6,11 @@
 /*   By: akheired <akheired@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 16:44:21 by akheired          #+#    #+#             */
-/*   Updated: 2024/03/29 21:57:37 by akheired         ###   ########.fr       */
+/*   Updated: 2024/04/01 14:40:52 by akheired         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 int	to_int(char *str)
 {

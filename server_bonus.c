@@ -6,11 +6,11 @@
 /*   By: akheired <akheired@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 16:44:01 by akheired          #+#    #+#             */
-/*   Updated: 2024/03/29 22:15:47 by akheired         ###   ########.fr       */
+/*   Updated: 2024/04/01 14:40:44 by akheired         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 int	g_bit_count = 7;
 
